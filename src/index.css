@@ -1,0 +1,224 @@
+/* https://img.freepik.com/free-photo/movie-background-collage_23-2149876030.jpg?w=1380&t=st=1688693533~exp=1688694133~hmac=7193c595f60e70e66aafa328385f8436a4a11e5da5fef45d6114a03934c2f688 */
+body {
+  background: url("./images/movie-background-collage.jpg") no-repeat center center fixed;
+  margin: 0;
+  background-size: cover;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+@media print {
+  body {
+      /*background: url("https://img.freepik.com/free-vector/cinema-room-background_1017-8728.jpg?w=1060&t=st=1688692283~exp=1688692883~hmac=56b4f5a13754e4fc83b487a3c0d675e889cbf1b9df0e00a1da7f3414963d3ace");*/
+  }
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#navigation {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+h2{
+  margin: 3rem auto 4rem;
+  margin-top: 4rem;
+  /* background-color: rgb(201, 183, 183); */
+  font-family: 'Monaco','Brush Script MT', cursive;
+  color: white;
+}
+img {
+  -webkit-backface-visibility: hidden;
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+
+}
+#navigation a {
+  margin-right: 10%;
+}
+
+#navigation a:last-child {
+  margin-right: 0;
+}
+
+thead th {
+  padding-right: 50px;
+}
+
+#print_component{
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+/* .cardMovie {
+  width: "18rem"; margin: "10px";background:'yellow'
+} */
+.card{
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+  background: rgb(62, 62, 102) !important;
+  
+}
+
+.my-modal .modal-content {
+  background-color: rgb(25, 25, 37);
+}
+
+.Auth-form-container {
+  /* background-image: url("https://img.freepik.com/free-vector/cinema-room-background_1017-8728.jpg?w=1060&t=st=1688692283~exp=1688692883~hmac=56b4f5a13754e4fc83b487a3c0d675e889cbf1b9df0e00a1da7f3414963d3ace"); */
+  /* background-color:  rgb(25, 25, 37); */
+
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  padding-top: 20px;
+  align-items: center;
+  width: 100vw;
+  height: 80vh; /* Side on phone looks bad*/
+}
+
+.Auth-form {
+  width: 420px;
+  box-shadow: rgba(158, 132, 132, 0.16) 1px 1px 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.Auth-form-content {
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+.Auth-form-title {
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 24px;
+  color: rgb(34, 34, 34);
+  font-weight: 800;
+}
+.Auth-form-logo {
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 28px;
+  color: rgb(149, 179, 44);
+  /* font-weight: 800; */
+}
+
+.social-container {
+  background: #e4e9f1;
+  margin-top: auto;
+  padding: 25px 50px;
+  border-radius: 20px;
+  opacity: 0.8;
+}
+a.social {
+  margin: 0 1rem;
+  transition: transform 250ms;
+  display: inline-block;
+}
+a.social:hover {
+  transform: translateY(-2px);
+}
+a.social:hover {
+  transform: translateY(-2px);
+}
+a.youtube {
+  color: #eb3223;
+}
+
+a.facebook {
+  /*color: #4968ad;*/
+}
+
+a.twitter {
+  /*color: #49a1eb;*/
+}
+
+a.instagram {
+  color: black;
+}
+.favBody {
+  display: flex ;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.favButton, .dislike {
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  /*right: 0;*/
+  /*margin-bottom: 10px;*/
+  /*margin-right: 10px;*/
+  color: #49a1eb
+}
+.favHeart {
+  color: #49a1eb
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  /*right: 0;*/
+  /*margin-bottom: 10px;*/
+  /*margin-right: 10px;*/
+}
+.favHeart:hover {
+  color: red;
+}
+.favHeartLike, .dislikeClicked {
+  color: red;
+}
+
+.dislike:hover {
+  color: red;
+}
+.star {
+  color: #49a1eb;
+}
+.starClicked, .star:hover {
+  color: gold;
+}
+
+/* .ToastMessage {
+  position: fixed !important;
+  bottom: 10px !important; Adjust the distance from the bottom
+  right: 10px !important; Adjust the distance from the right
+  z-index: 9999 !important; Ensure a high z-index to appear above other elements
+} */
