@@ -7,8 +7,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import * as Icon from "react-bootstrap-icons";
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{3,24}$/;
-const REGISTER_URL = "https://moviedb-api.onrender.com/register";
-// '/register'
+const REGISTER_URL = '/register';
 
 export default function Register() {
   // initial state

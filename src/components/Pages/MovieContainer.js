@@ -28,10 +28,9 @@ const MovieContainer = () => {
   const {toastMessages} = useToast()
   useEffect(function () {
     async function fetchData() {
-      // "https://moviedb-api.onrender.com"
-      // 'http://localhost/movies'
+
       try {
-        const response = await axiosPrivate.get("https://moviedb-api.onrender.com/movies",{
+        const response = await axiosPrivate.get('http://localhost/movies',{
           headers: {Authorization: `Bearer ${auth?.token}`}
         });
         const resData = response;
@@ -72,10 +71,9 @@ const MovieContainer = () => {
 
   async function addGoalHandler(movieTitle) {
     // setIsLoading(true);
-    // "https://moviedb-api.onrender.com"
-    // 'http://localhost/favorites'
+
     try {
-      const response = await axiosPrivate.post("https://moviedb-api.onrender.com/favorites",
+      const response = await axiosPrivate.post('http://localhost/favorites',
         JSON.stringify({ 'title':movieTitle },
       {
           headers: { 'Content-Type': 'application/json' },
