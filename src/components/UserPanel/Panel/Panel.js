@@ -24,9 +24,9 @@ function Panel() {
 
    useEffect(function () {
     async function fetchData() {
-
+      // 'http://localhost/user'
       try {
-        const response = await axiosPrivate.get('http://localhost/user',{
+        const response = await axiosPrivate.get("https://moviedb-backend-tz9d.onrender.com/user",{
           headers: {Authorization: `Bearer ${auth?.token}`}
         });
         //const resData = response;

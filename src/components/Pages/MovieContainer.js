@@ -30,7 +30,7 @@ const MovieContainer = () => {
     async function fetchData() {
 
       try {
-        const response = await axiosPrivate.get('http://localhost/movies',{
+        const response = await axiosPrivate.get('/movies',{
           headers: {Authorization: `Bearer ${auth?.token}`}
         });
         const resData = response;
@@ -71,9 +71,9 @@ const MovieContainer = () => {
 
   async function addGoalHandler(movieTitle) {
     // setIsLoading(true);
-
+    // 'http://localhost/favorites'
     try {
-      const response = await axiosPrivate.post('http://localhost/favorites',
+      const response = await axiosPrivate.post("https://moviedb-backend-tz9d.onrender.com/favorites",
         JSON.stringify({ 'title':movieTitle },
       {
           headers: { 'Content-Type': 'application/json' },

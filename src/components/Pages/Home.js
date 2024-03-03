@@ -43,9 +43,9 @@ const Home = () => {
   const from = location.state?.from?.pathname || "/login";
   useEffect(function () {
     async function fetchData() {
-
+      // 'http://localhost/movies'
       try {
-        const response = await axiosPrivate.get('http://localhost/movies',{
+        const response = await axiosPrivate.get("https://moviedb-backend-tz9d.onrender.com/movies",{
           headers: {Authorization: `Bearer ${auth?.token}`}
         });
         const resData = response;

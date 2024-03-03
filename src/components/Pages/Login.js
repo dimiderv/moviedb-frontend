@@ -34,10 +34,10 @@ export default function Login() {
     e.preventDefault();
 
     // set configurations
-
+    // "http://localhost:80/login"
     try {
-      const response = await axios.post(
-        "http://localhost:80/login",
+      const response = await axios.post("https://moviedb-backend-tz9d.onrender.com/login"
+        ,
           JSON.stringify({ email, password }),
           {
               headers: { 'Content-Type': 'application/json' },

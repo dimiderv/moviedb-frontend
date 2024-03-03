@@ -21,8 +21,10 @@ export default function Product(props) {
     function handleModal() {
         setActive(!active);
     }
+
+    // 'http://localhost/favorites'
     const addToFavorites = async () => {
-       const apiCall =   axiosPrivate.post('http://localhost/favorites',
+       const apiCall =   axiosPrivate.post("https://moviedb-backend-tz9d.onrender.com/favorites",
             JSON.stringify({ 'title': props.movie.title }),
             {
                 headers: { 'Content-Type': 'application/json' },
