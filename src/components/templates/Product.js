@@ -28,13 +28,13 @@ const navigate = useNavigate()
     const deleteFromFavorites = async ()=>{
         const apiCall= deleteFavorite({'title':props.movie.title}).unwrap();
         showToast(apiCall,`Deleted ${props.movie.title} from favorites`,'');
-        // setTimeout(()=>{
-        //     props.onDeleteFavorite();
-        // },500)
+        setTimeout(()=>{
+            props.onDeleteFavorite();
+        },500)
     }
     const handleDeleteFavorite = async () => {
         await deleteFromFavorites().then(()=>{
-            props.onDeleteFavorite();
+            // props.onDeleteFavorite();
         })
 
     };
