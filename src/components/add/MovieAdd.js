@@ -56,7 +56,7 @@ const MovieAdd = ({ movie, addGoalHandler }) => {
   function handleModal() {
     setActive(!active);
   }
- console.log(movie)
+
   return active ? (
     <MyVerticallyCenteredModal
       show={active}

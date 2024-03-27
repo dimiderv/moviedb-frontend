@@ -1,23 +1,21 @@
-import { useState,useContext,useEffect } from 'react';
+import { useState } from 'react';
 
 // import other component
 import Titles from '../../Titles/Titles'
 import FormInput from '../../Forms/FormInput/FormInput'
-
-// import other pkg
 import { Form, Button } from 'react-bootstrap'
 import { useFormik, } from 'formik'
 import { string, object, ref } from 'yup'
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
-import AuthContext from '../../../../context/AuthProvider';
+
+import {useUpdatePasswordMutation} from "../../../../features/auth/authApiSlice";
+
 const UserChangePassword = ({ password, onChangeInfo }) => {
     const [submit, setSubmit] = useState(false)
-    const axiosPrivate = useAxiosPrivate();
-    const {auth} = useContext(AuthContext);
     const [currentPassword, setCurrentPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [matchPassword, setMatchPassword] = useState('')
     const [loading, setLoading] = useState(false)
+    const [updatePassword] = useUpdatePasswordMutation()
     const formik = useFormik({
         initialValues: {
             currentPassword: '',
@@ -31,7 +29,8 @@ const UserChangePassword = ({ password, onChangeInfo }) => {
                 // .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{4,}$/, 'invalid password'),
                 
             newPassword: string().required('please enter your new password')
-                .min(4, 'your new password must be 4 characters or more')      .test('not-same-as-current', 'New password must be different from the current one', function (value) {
+                .min(4, 'your new password must be 4 characters or more')
+                .test('not-same-as-current', 'New password must be different from the current one', function (value) {
                     // Access form values using formik.values
                     return value !== formik.values.currentPassword;
                   }),
@@ -53,18 +52,14 @@ const UserChangePassword = ({ password, onChangeInfo }) => {
 
             console.log(dataObj)
             try{
-                const response = await axiosPrivate.post('/updatePassword',
-                    JSON.stringify({'dataObj':dataObj}),
-                    {
-                        headers: {"Content-Type": "application/json"},
-                        withCredentials: true
-                    });
+                const response = await updatePassword({'dataObj':dataObj}).unwrap()
                     const resData = response;
-                    console.log(resData.data.message)
-                    alert(resData.data.message)
+                    console.log(resData)
+                    console.log(resData.message)
+                    alert(resData?.message)
                     actions.resetForm()
             }catch(err){
-                alert(err.response.data.message)
+                alert(err.data.message)
                 setSubmit(false)
                 // setCurrentPassword('')
                 // setMatchPassword('')
@@ -95,37 +90,6 @@ const UserChangePassword = ({ password, onChangeInfo }) => {
     }
 
     const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-    // async function handleSubmit(){
-    //     const dataObj = {
-    //         'currentPassword': formik.values.currentPassword,
-    //         'newPassword': formik.values.newPassword,
-    //     }
-    //     setSubmit(true)
-    //     setLoading(true)
-    //     async function postPassword(){
-
-    //         console.log(dataObj)
-    //         try{
-    //             const response = await axiosPrivate.post('/updatePassword',
-    //                 JSON.stringify({'dataObj':dataObj}),
-    //                 {
-    //                     headers: {"Content-Type": "application/json"},
-    //                     withCredentials: true
-    //                 });
-    //                 const resData = response;
-    //         }catch(err){
-    //             alert(err.response.data.message)
-    //             setSubmit(false)
-                
-    //         }
-    
-    //     }
-    //     postPassword()
-    //     await delay(1000);
-    //     setLoading(false)
-
-
-    // }
     const loadingDiv = (
         <div className="d-flex justify-content-center">
           <div className="text-center">
