@@ -24,7 +24,10 @@ function Panel() {
    },[data,isSuccess])
     let content
     if (isLoading) {
-        content= <Loading />;
+        content=
+            <div className={`${styles['panel-wrapper']} d-flex align-items-center justify-content-center mt-30s`}>
+                <Loading />
+            </div>;
     }else if(isSuccess) {
         const {email, username, password, firstName, lastName, entryDate, birthday} = userDetails;
         const sidebarLinks = [
