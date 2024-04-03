@@ -117,7 +117,7 @@ const UserInformation = ({ username , firstName, lastName, email, birthday, onCh
 
     return loading? loadingDiv :(
         <>
-            <Titles title='Welcome to the Information' text="check or change your information as you want" />
+            <Titles title='User Settings' text="check or change your information as you want" />
             
             <Form noValidate onSubmit={formik.handleSubmit}>
                 <Row className="mt-5 px-3 ">

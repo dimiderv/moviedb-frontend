@@ -20,7 +20,7 @@ export default function Login() {
   const [login] = useLoginMutation();
   const dispatch = useDispatch();
 
-  const from = location.state?.from?.pathname || "/welcome";
+  const from = location.state?.from?.pathname || "/home";
 
 
   const togglePersist = ()=>{

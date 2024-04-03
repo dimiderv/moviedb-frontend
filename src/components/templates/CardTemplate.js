@@ -1,17 +1,29 @@
-import { Card } from "react-bootstrap"
-import { Link } from "react-router-dom";
+import {Button, Card} from "react-bootstrap"
+import {Link, useNavigate} from "react-router-dom";
 import React from "react";
 export default function CardTemplate  (props){
-    const header = {
-        background: "white",
+    const navigate = useNavigate()
+;    const header = {
+        // background: "white",
         fontSize:"1.2rem",
-        color:"red"
+        color:"white",
+
     }
 
-
+    const text ={
+        color:'white',
+    }
+    const btn = {
+        background:'#3768e8',
+        color:'#fff',
+        borderColor:'#2e6da4'
+    }
+    const crd = {
+        width:'19rem',
+    }
     return(
-        <Card>     
-            <Card.Header  style={header}>{props.title} </Card.Header>
+        <Card style={crd}>
+            <Card.Header  style={header}> {props.title}</Card.Header>
             <Card.Img
                 variant="top"
                 src={props.thumbnail}
@@ -20,12 +32,14 @@ export default function CardTemplate  (props){
                 height={200}
             />
             <Card.Body>
-                <Card.Text>
+                <Card.Text style={text}>
                     {props.bodyText}
                 </Card.Text>
-                <Link to={props.link}>{props.title}</Link>
+                <Button  style={btn} onClick={()=>navigate(props.link)}> {props.title}</Button>
+                {/*<Link to={props.link}>{props.title}</Link>*/}
             </Card.Body>
         </Card> 
 
     )   
 }
+

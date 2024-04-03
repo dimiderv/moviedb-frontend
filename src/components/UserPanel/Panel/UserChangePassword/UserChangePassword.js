@@ -109,7 +109,7 @@ const UserChangePassword = ({ password, onChangeInfo }) => {
 
     return loading? loadingDiv :(    
         <>
-            <Titles title="Welcome to the change password" text="change your password as you want" />
+            <Titles title="Change password" text="change your password as you want" />
         
             <Form className="mt-5" noValidate onSubmit={formik.handleSubmit}>
                 <FormInput 

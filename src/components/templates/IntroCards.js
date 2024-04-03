@@ -6,8 +6,8 @@ function IntroCards() {
 
     const cardTitles =[
          {
-            title:"This is a movieDB project",
-            bodyText: "In this movie database you will be able to...",
+            title:"Home",
+            bodyText: "Click here to navigate to homepage of MovieDB.",
             link:"/home",
              thumbnail:'https://images.unsplash.com/photo-1556155092-490a1ba16284?q=80&w=2070' +
                  '&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdl' +
@@ -15,14 +15,14 @@ function IntroCards() {
         },
        {
             title:"Sign In",
-            bodyText:"Please sign in to have access to our database",
+            bodyText:"Please sign in to have access to our database.",
             link:"/login", thumbnail: "https://images.unsplash.com/photo-1460467820054-c87ab43e9b59?q=80&" +
                "w=1967&auto" +
                "=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
        {
             title:"Register",
-            bodyText:"To create an account please press here.",
+            bodyText:"To create an account please click here.",
             link:"/register",
            thumbnail: "https://plus.unsplash.com/premium_photo-1661410866488-f9c16c7c46aa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
