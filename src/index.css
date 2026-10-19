@@ -1,224 +1,258 @@
-/* https://img.freepik.com/free-photo/movie-background-collage_23-2149876030.jpg?w=1380&t=st=1688693533~exp=1688694133~hmac=7193c595f60e70e66aafa328385f8436a4a11e5da5fef45d6114a03934c2f688 */
+/*
+ * MovieDB theme. Bootstrap 5 runs in dark mode (data-bs-theme="dark" on <html>);
+ * the tokens below set the palette, and the Bootstrap variables are mapped onto them.
+ */
+:root,
+[data-bs-theme='dark'] {
+    --mdb-bg: #0d0e1a;
+    --mdb-surface: #161827;
+    --mdb-surface-raised: #212439;
+    --mdb-border: rgba(255, 255, 255, 0.08);
+    --mdb-border-strong: rgba(255, 255, 255, 0.18);
+    --mdb-text: #eceef6;
+    --mdb-text-muted: #a5aac4;
+    --mdb-accent: #f5b942;
+    --mdb-accent-hover: #ffca63;
+    --mdb-accent-contrast: #1d1503;
+    --mdb-accent-rgb: 245, 185, 66;
+    --mdb-favorite: #ff5c7a;
+    --mdb-radius: 14px;
+    --mdb-radius-sm: 8px;
+    --mdb-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+    --bs-body-bg: var(--mdb-bg);
+    --bs-body-bg-rgb: 13, 14, 26;
+    --bs-body-color: var(--mdb-text);
+    --bs-emphasis-color: #ffffff;
+    --bs-secondary-color: var(--mdb-text-muted);
+    --bs-secondary-bg: var(--mdb-surface-raised);
+    --bs-tertiary-bg: var(--mdb-surface);
+    --bs-border-color: var(--mdb-border-strong);
+    --bs-primary: var(--mdb-accent);
+    --bs-primary-rgb: var(--mdb-accent-rgb);
+    --bs-link-color: var(--mdb-accent);
+    --bs-link-color-rgb: var(--mdb-accent-rgb);
+    --bs-link-hover-color: var(--mdb-accent-hover);
+    --bs-link-hover-color-rgb: 255, 202, 99;
+    --bs-focus-ring-color: rgba(var(--mdb-accent-rgb), 0.45);
+    --bs-body-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --bs-dropdown-bg: var(--mdb-surface-raised);
+    color-scheme: dark;
+}
+
+html {
+    scroll-padding-top: 5rem;
+}
+
 body {
-  background: url("./images/movie-background-collage.jpg") no-repeat center center fixed;
-  margin: 0;
-  background-size: cover;
-  height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
-}
-@media print {
-  body {
-      /*background: url("https://img.freepik.com/free-vector/cinema-room-background_1017-8728.jpg?w=1060&t=st=1688692283~exp=1688692883~hmac=56b4f5a13754e4fc83b487a3c0d675e889cbf1b9df0e00a1da7f3414963d3ace");*/
-  }
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    min-height: 100vh;
+    background: var(--mdb-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-#navigation {
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-h2{
-  margin: 3rem auto 4rem;
-  margin-top: 4rem;
-  /* background-color: rgb(201, 183, 183); */
-  font-family: 'Monaco','Brush Script MT', cursive;
-  color: white;
-}
-img {
-  -webkit-backface-visibility: hidden;
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-
-}
-#navigation a {
-  margin-right: 10%;
+/*
+ * Full-screen movie collage behind every page. A fixed layer is used instead of
+ * background-attachment: fixed, which iOS Safari ignores. The dark tint keeps text readable;
+ * lower the alpha values to show more of the image.
+ */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(rgba(13, 14, 26, 0.78), rgba(13, 14, 26, 0.9)),
+        url('./images/movie-background-collage.jpg') center / cover no-repeat;
 }
 
-#navigation a:last-child {
-  margin-right: 0;
+:focus-visible {
+    outline: 2px solid var(--mdb-accent);
+    outline-offset: 2px;
 }
 
-thead th {
-  padding-right: 50px;
+/* App shell */
+.app-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-#print_component{
-  text-align: center;
+.app-main {
+    flex: 1;
+    padding: 1.5rem 0 2rem;
 }
 
-.hide {
-  display: none;
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 2000;
+    padding: 0.5rem 1rem;
+    border-radius: var(--mdb-radius-sm);
+    background: var(--mdb-accent);
+    color: var(--mdb-accent-contrast);
+    font-weight: 600;
+    text-decoration: none;
 }
 
-.valid {
-  color: limegreen;
-  margin-left: 0.25rem;
+.skip-link:focus {
+    top: 1rem;
 }
 
-.invalid {
-  color: red;
-  margin-left: 0.25rem;
+/* Navbar */
+.app-navbar {
+    background: rgba(13, 14, 26, 0.85);
+    border-bottom: 1px solid var(--mdb-border);
+    backdrop-filter: saturate(160%) blur(10px);
 }
 
-.errmsg {
-  background-color: lightpink;
-  color: firebrick;
-  font-weight: bold;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
+.app-brand {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--mdb-accent) !important;
 }
 
-.offscreen {
-  position: absolute;
-  left: -9999px;
+.app-navbar .nav-link {
+    font-weight: 500;
 }
 
-.instructions {
-  font-size: 0.75rem;
-  border-radius: 0.5rem;
-  background: #000;
-  color: #fff;
-  padding: 0.25rem;
-  position: relative;
-  bottom: -10px;
-}
-/* .cardMovie {
-  width: "18rem"; margin: "10px";background:'yellow'
-} */
-.card{
-  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-  background: rgb(62, 62, 102) !important;
-  
+.app-navbar .nav-link.active {
+    color: var(--mdb-accent);
 }
 
-.my-modal .modal-content {
-  background-color: rgb(25, 25, 37);
+.app-search {
+    width: 100%;
 }
 
-.Auth-form-container {
-  /* background-image: url("https://img.freepik.com/free-vector/cinema-room-background_1017-8728.jpg?w=1060&t=st=1688692283~exp=1688692883~hmac=56b4f5a13754e4fc83b487a3c0d675e889cbf1b9df0e00a1da7f3414963d3ace"); */
-  /* background-color:  rgb(25, 25, 37); */
-
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  padding-top: 20px;
-  align-items: center;
-  width: 100vw;
-  height: 80vh; /* Side on phone looks bad*/
+@media (min-width: 768px) {
+    .app-search {
+        width: 16rem;
+    }
 }
 
-.Auth-form {
-  width: 420px;
-  box-shadow: rgba(158, 132, 132, 0.16) 1px 1px 10px;
-  padding-top: 30px;
-  padding-bottom: 20px;
-  border-radius: 8px;
-  background-color: white;
+/* Footer */
+.app-footer {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--mdb-border);
+    font-size: 0.875rem;
+    color: var(--mdb-text-muted);
 }
 
-.Auth-form-content {
-  padding-left: 12%;
-  padding-right: 12%;
+.app-footer-link {
+    color: var(--mdb-text-muted);
 }
 
-.Auth-form-title {
-  text-align: center;
-  margin-bottom: 1em;
-  font-size: 24px;
-  color: rgb(34, 34, 34);
-  font-weight: 800;
-}
-.Auth-form-logo {
-  text-align: center;
-  margin-bottom: 1em;
-  font-size: 28px;
-  color: rgb(149, 179, 44);
-  /* font-weight: 800; */
+.app-footer-link:hover {
+    color: var(--mdb-text);
 }
 
-.social-container {
-  background: #e4e9f1;
-  margin-top: auto;
-  padding: 25px 50px;
-  border-radius: 20px;
-  opacity: 0.8;
-}
-a.social {
-  margin: 0 1rem;
-  transition: transform 250ms;
-  display: inline-block;
-}
-a.social:hover {
-  transform: translateY(-2px);
-}
-a.social:hover {
-  transform: translateY(-2px);
-}
-a.youtube {
-  color: #eb3223;
+.app-toasts {
+    z-index: 1090;
 }
 
-a.facebook {
-  /*color: #4968ad;*/
+/* Page headings */
+.page-header {
+    margin-bottom: 1.75rem;
 }
 
-a.twitter {
-  /*color: #49a1eb;*/
+.page-header-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-a.instagram {
-  color: black;
-}
-.favBody {
-  display: flex ;
-  justify-content: center;
-  flex-wrap: nowrap;
-}
-.favButton, .dislike {
-  /*position: absolute;*/
-  /*bottom: 0;*/
-  /*right: 0;*/
-  /*margin-bottom: 10px;*/
-  /*margin-right: 10px;*/
-  color: #49a1eb
-}
-.favHeart {
-  color: #49a1eb
-  /*position: absolute;*/
-  /*bottom: 0;*/
-  /*right: 0;*/
-  /*margin-bottom: 10px;*/
-  /*margin-right: 10px;*/
-}
-.favHeart:hover {
-  color: red;
-}
-.favHeartLike, .dislikeClicked {
-  color: red;
+.page-title {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
-.dislike:hover {
-  color: red;
-}
-.star {
-  color: #49a1eb;
-}
-.starClicked, .star:hover {
-  color: gold;
+.page-subtitle {
+    margin: 0.35rem 0 0;
+    color: var(--mdb-text-muted);
 }
 
-/* .ToastMessage {
-  position: fixed !important;
-  bottom: 10px !important; Adjust the distance from the bottom
-  right: 10px !important; Adjust the distance from the right
-  z-index: 9999 !important; Ensure a high z-index to appear above other elements
-} */
+.section-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.genre-filter {
+    min-width: 12rem;
+}
+
+.password-form {
+    max-width: 28rem;
+}
+
+/* Bootstrap overrides that can't be reached through CSS variables */
+.btn-primary {
+    --bs-btn-color: var(--mdb-accent-contrast);
+    --bs-btn-bg: var(--mdb-accent);
+    --bs-btn-border-color: var(--mdb-accent);
+    --bs-btn-hover-color: var(--mdb-accent-contrast);
+    --bs-btn-hover-bg: var(--mdb-accent-hover);
+    --bs-btn-hover-border-color: var(--mdb-accent-hover);
+    --bs-btn-active-color: var(--mdb-accent-contrast);
+    --bs-btn-active-bg: var(--mdb-accent-hover);
+    --bs-btn-active-border-color: var(--mdb-accent-hover);
+    --bs-btn-disabled-color: var(--mdb-accent-contrast);
+    --bs-btn-disabled-bg: var(--mdb-accent);
+    --bs-btn-disabled-border-color: var(--mdb-accent);
+    --bs-btn-focus-shadow-rgb: var(--mdb-accent-rgb);
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    background-color: var(--mdb-bg);
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: var(--mdb-accent);
+    box-shadow: 0 0 0 0.25rem rgba(var(--mdb-accent-rgb), 0.25);
+}
+
+.form-check-input:checked {
+    background-color: var(--mdb-accent);
+    border-color: var(--mdb-accent);
+}
+
+.form-switch .form-check-input:focus:not(:checked) {
+    --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28245, 185, 66, 1%29'/%3e%3c/svg%3e");
+}
+
+.modal-content {
+    background: var(--mdb-surface);
+    border: 1px solid var(--mdb-border);
+    border-radius: var(--mdb-radius);
+}
+
+.dropdown-menu {
+    border-color: var(--mdb-border);
+    box-shadow: var(--mdb-shadow);
+}
+
+.badge.bg-secondary {
+    background-color: var(--mdb-surface-raised) !important;
+    color: var(--mdb-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

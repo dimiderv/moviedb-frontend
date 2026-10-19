@@ -1,0 +1,60 @@
+.hero {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 4rem 0 3rem;
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.lead {
+    margin: 0 auto 2rem;
+    max-width: 36rem;
+    font-size: 1.125rem;
+    color: var(--mdb-text-muted);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin: 0 0 3rem;
+    padding: 0;
+    list-style: none;
+}
+
+.feature {
+    padding: 1.5rem;
+    background: var(--mdb-surface);
+    border: 1px solid var(--mdb-border);
+    border-radius: var(--mdb-radius);
+}
+
+.featureIcon {
+    font-size: 1.75rem;
+    color: var(--mdb-accent);
+}
+
+.featureTitle {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.featureText {
+    margin: 0;
+    color: var(--mdb-text-muted);
+}

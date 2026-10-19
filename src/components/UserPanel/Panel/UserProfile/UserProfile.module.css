@@ -1,46 +1,55 @@
-.user-profile {
-    padding: 20px;
-    border-radius: 30px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
-}
-.user-profile-label {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
+.profile {
     display: flex;
-    cursor: pointer;
-    margin-top: -85px;
-    outline: 10px solid white;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+    background: var(--mdb-surface);
+    border: 1px solid var(--mdb-border);
+    border-radius: var(--mdb-radius);
 }
-.user-profile-label img {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 100%;
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 88px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--mdb-accent-contrast);
+    background: linear-gradient(135deg, var(--mdb-accent), #ff8a5c);
 }
+
 .username {
-    font-size: 1.3rem;
-    font-weight: bolder;
-    color: black;
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
 }
-.member {
-    font-size: 0.8rem;
-    font-weight: bolder;
-    color: black;
+
+.handle {
+    margin: 0.15rem 0 0;
+    color: var(--mdb-text-muted);
 }
-.user-email {
-    font-size: 0.9rem;
-    font-weight: lighter;
+
+.details {
+    width: 100%;
+    margin: 1.25rem 0 0;
+    font-size: 0.875rem;
 }
-.user-birthday {
-    font-size: 0.9rem;
+
+.details dt {
+    font-weight: 500;
+    color: var(--mdb-text-muted);
 }
-.profile-icon-box {
-    position: absolute;
-    right: 5px;
-    bottom: 0;
-    border-radius: 100%;
-    padding: 5px 4.5px;
-    outline: 5px solid white;
-    display: flex;
+
+.details dd {
+    margin: 0 0 0.75rem;
+    overflow-wrap: anywhere;
+}
+
+.details dd:last-child {
+    margin-bottom: 0;
 }

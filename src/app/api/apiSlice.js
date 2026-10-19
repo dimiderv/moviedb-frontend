@@ -1,47 +1,50 @@
-import {createApi,fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {logOut, setCredentials} from "../../features/auth/authSlice";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { logOut, setCredentials } from '../../features/auth/authSlice';
 
+export const BASE_URL = import.meta.env.VITE_API_URL || 'https://moviedb-backend-tz9d.onrender.com';
 
-const BASE_URL = 'https://moviedb-backend-tz9d.onrender.com'
-// 'http://localhost:80';
+// Endpoints that must never trigger a token refresh themselves.
+const AUTH_ENDPOINTS = ['login', 'register', 'refresh', 'sendLogout'];
 
 const baseQuery = fetchBaseQuery({
-    baseUrl:BASE_URL,
-    credentials:'include',
-    prepareHeaders: (headers, {getState})=>{
+    baseUrl: BASE_URL,
+    credentials: 'include',
+    prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.token;
-        if(token){
-            headers.set("authorization", `Bearer ${token}`)
+        if (token) {
+            headers.set('authorization', `Bearer ${token}`);
         }
-        return headers
-    }
-})
+        return headers;
+    },
+});
 
-const baseQueryWithReauth = async (args, api, extraOptions) =>{
-    let result = await baseQuery(args,api,extraOptions);
-    // console.log(result)
-    if (result?.error?.originalStatus === 403 || result?.error?.status === 403){
-        console.log('sending refresh token');
-        //send refresh toke to get new access token
-        const refreshResult = await baseQuery('/refresh',api,extraOptions)
-        // console.log(refreshResult)
-        if(refreshResult?.data){
-            const user = api.getState().auth.username;
-            api.dispatch(setCredentials({...refreshResult.data, user}));
-            //retry the original query with new access token
-            result = await baseQuery(args,api,extraOptions)
-        }else {
-            // if (refreshResult?.error?.status === 403) {
-            //     refreshResult.error.data.message = "Your login has expired."
-            // }
-            // return refreshResult
-            api.dispatch(logOut())
+// Shared so parallel requests that all get 401/403 wait on a single /refresh call.
+let refreshPromise = null;
+
+const baseQueryWithReauth = async (args, api, extraOptions) => {
+    let result = await baseQuery(args, api, extraOptions);
+    const status = result.error?.status;
+
+    if ((status === 401 || status === 403) && !AUTH_ENDPOINTS.includes(api.endpoint)) {
+        if (!refreshPromise) {
+            refreshPromise = baseQuery('/refresh', api, extraOptions).finally(() => {
+                refreshPromise = null;
+            });
+        }
+        const refreshResult = await refreshPromise;
+
+        if (refreshResult.data) {
+            api.dispatch(setCredentials(refreshResult.data));
+            result = await baseQuery(args, api, extraOptions);
+        } else {
+            api.dispatch(logOut());
         }
     }
-    return result
-}
+    return result;
+};
 
 export const apiSlice = createApi({
     baseQuery: baseQueryWithReauth,
-    endpoints:builder=>({})
-})
+    tagTypes: ['Movies', 'Favorites', 'User'],
+    endpoints: () => ({}),
+});

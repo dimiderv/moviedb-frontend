@@ -1,0 +1,209 @@
+/* Card */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    background: var(--mdb-surface);
+    border: 1px solid var(--mdb-border);
+    border-radius: var(--mdb-radius);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover,
+.card:focus-within {
+    transform: translateY(-3px);
+    border-color: var(--mdb-border-strong);
+    box-shadow: var(--mdb-shadow);
+}
+
+.posterButton {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.poster,
+.posterFallback {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    background: var(--mdb-surface-raised);
+}
+
+.posterFallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--mdb-text-muted);
+}
+
+.cardBody {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem;
+}
+
+.cardText {
+    flex: 1;
+    min-width: 0;
+}
+
+.cardTitle {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cardSubtitle {
+    margin: 0.25rem 0 0;
+    font-size: 0.8rem;
+    color: var(--mdb-text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.favoriteButton {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid var(--mdb-border);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--mdb-text-muted);
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.favoriteButton:hover:not(:disabled) {
+    color: var(--mdb-favorite);
+    border-color: var(--mdb-favorite);
+}
+
+.favoriteActive {
+    color: var(--mdb-favorite);
+    border-color: var(--mdb-favorite);
+    background: rgba(255, 92, 122, 0.12);
+}
+
+.favoriteButton:disabled {
+    opacity: 0.6;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (max-width: 400px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+}
+
+/* Shelf */
+.shelf {
+    margin-bottom: 2.5rem;
+}
+
+.shelfHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.seeAll {
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.shelfRow {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(150px, 180px);
+    gap: 1rem;
+    margin: 0;
+    padding: 0.25rem 0.25rem 1rem;
+    list-style: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--mdb-border-strong) transparent;
+}
+
+.shelfItem {
+    scroll-snap-align: start;
+}
+
+/* Details modal */
+.modalYear {
+    font-weight: 400;
+    color: var(--mdb-text-muted);
+}
+
+.modalLayout {
+    display: grid;
+    grid-template-columns: minmax(140px, 220px) 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.modalPoster {
+    border-radius: var(--mdb-radius-sm);
+}
+
+@media (max-width: 575px) {
+    .modalLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .modalPoster {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+}
+
+.genreBadge {
+    font-weight: 500;
+}
+
+.extract {
+    line-height: 1.6;
+}
+
+.sectionLabel {
+    margin: 1.25rem 0 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mdb-text-muted);
+}
+
+.cast {
+    margin: 0;
+    line-height: 1.6;
+}

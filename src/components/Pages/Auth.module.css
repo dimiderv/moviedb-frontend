@@ -1,0 +1,56 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 3rem;
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    padding: 2rem;
+    background: var(--mdb-surface);
+    border: 1px solid var(--mdb-border);
+    border-radius: var(--mdb-radius);
+    box-shadow: var(--mdb-shadow);
+}
+
+.cardWide {
+    max-width: 520px;
+}
+
+@media (max-width: 575px) {
+    .card {
+        padding: 1.5rem 1.25rem;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--mdb-accent);
+}
+
+.title {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.switch {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--mdb-text-muted);
+}
+
+.hint {
+    margin: 0.75rem 0 0;
+    font-size: 0.875rem;
+    text-align: center;
+    color: var(--mdb-text-muted);
+}

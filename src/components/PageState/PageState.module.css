@@ -1,0 +1,35 @@
+.state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 40vh;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.fullscreen {
+    min-height: 100vh;
+}
+
+.spinner {
+    color: var(--mdb-accent);
+}
+
+.icon {
+    font-size: 2.5rem;
+    color: var(--mdb-text-muted);
+}
+
+.title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.text {
+    margin: 0;
+    max-width: 32rem;
+    color: var(--mdb-text-muted);
+}

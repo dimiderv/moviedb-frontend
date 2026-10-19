@@ -1,14 +1,14 @@
-.information-heading {
-    font-size: 1.3rem;
-    color: black
+.header {
+    margin-bottom: 1.75rem;
 }
-.information-heading-text {
-    font-size: 1rem;
-    font-weight: lighter;
+
+.title {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 600;
 }
-@media screen and (max-width: 441px) {
-    .information-heading {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-    }
+
+.text {
+    margin: 0.35rem 0 0;
+    color: var(--mdb-text-muted);
 }

@@ -1,4 +1,25 @@
-.sidebar-links {
-    border-radius: 30px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px;
+.nav {
+    padding: 0.5rem;
+    background: var(--mdb-surface);
+    border: 1px solid var(--mdb-border);
+    border-radius: var(--mdb-radius);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (max-width: 767px) {
+    .list {
+        flex-direction: row;
+    }
+
+    .list > li {
+        flex: 1;
+    }
 }

@@ -1,7 +1,39 @@
-.description {
-    border-radius: 10px;
-    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 30px; */
-    /* padding: 10px;
-    margin: 20px; */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin: 0 0 2rem;
+}
 
+.stat {
+    padding: 1.25rem;
+    background: var(--mdb-surface-raised);
+    border-radius: var(--mdb-radius-sm);
+}
+
+.stat dt {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--mdb-text-muted);
+}
+
+.stat dd {
+    margin: 0.25rem 0 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.heading {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.badge {
+    padding: 0.5em 0.8em;
+    font-weight: 500;
+}
+
+.muted {
+    color: var(--mdb-text-muted);
 }

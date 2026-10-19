@@ -1,21 +1,32 @@
-# React Authentication
+# MovieDB frontend
 
-This repository houses a project built during the course of learning how to build an authentication system with react. The following are the tutorials:
+React 18 + Vite app for MovieDB. Talks to the [MovieDB backend](https://github.com/dimiderv/moviedb-backend).
 
-* [Introduction to React-Bootstrap](https://dev.to/ebereplenty/introduction-to-react-bootstrap-20ik)
-* [React Authentication - Register](https://dev.to/ebereplenty/react-authentication-part-1-39aj)
-* [React Authentication - LOGIN](https://dev.to/ebereplenty/react-authentication-login-h3i)
-* [React Authentication - Protecting and Accessing Routes/Endpoints](https://dev.to/ebereplenty/react-authentication-protecting-and-accessing-routes-endpoints-96h)
-* [Printing in React Made Easy With React-To-Print](https://dev.to/ebereplenty/printing-in-react-made-easy-with-react-to-print-4b3k)
+- **State:** Redux Toolkit; RTK Query for all API calls, with automatic access-token refresh
+- **UI:** React-Bootstrap 2 / Bootstrap 5 in dark mode, themed through CSS variables in `src/index.css`
+- **Forms:** Formik + Yup
 
-## Dependencies
-* [Axios](https://www.npmjs.com/package/axios)
-* [React-Bootstrap](https://react-bootstrap.github.io/)
-* [universal-cookie](https://www.npmjs.com/package/universal-cookie)
-* [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+## Setup
 
-## Installation
-* Clone the whole project or by branch name
-* Run ``npm install``
-* Run ``npm start``
-*That will open the project on your default browser*
+```bash
+cp .env.example .env   # point VITE_API_URL at your backend (optional)
+npm install
+npm run dev            # http://localhost:3000
+npm run build          # production build in ./build
+```
+
+The backend must list the frontend origin in `ALLOWED_ORIGINS` (localhost is allowed outside production).
+
+## Structure
+
+```
+src/
+  app/            store + RTK Query base (token refresh)
+  features/       auth, movies/favorites, search slices and API endpoints
+  components/
+    movies/       MovieCard, MovieGrid, MovieShelf, MovieDetailsModal
+    Pages/        Landing, Home, Movies, Favorites, Login, Register, Missing
+    UserPanel/    account settings
+    PageState/    loading / error / empty states
+  context/        toast notifications
+```

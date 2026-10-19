@@ -1,22 +1,50 @@
-.sidebar-link {
-    cursor: pointer;
-}
-.right-arrow-icon {
-    transition: .4s;
-}
-.sidebar-link:hover .right-arrow-icon {
-    transform: translateX(-10px);
-}
-.right-arrow-icon.active {
-    transform: translateX(-10px);
-}
-.sidebar-link-border {
-    width: 100%;
+.link {
     display: flex;
-    justify-content: center;
-    padding: 15px 23px;
-}
-.sidebar-link-border div {
-    outline: 1px solid #f1f1f1;
+    align-items: center;
+    gap: 0.75rem;
     width: 100%;
+    padding: 0.75rem 1rem;
+    border: 0;
+    border-radius: var(--mdb-radius-sm);
+    background: transparent;
+    color: var(--mdb-text);
+    text-align: left;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.link:hover {
+    background: var(--mdb-surface-raised);
+}
+
+.active {
+    background: var(--mdb-surface-raised);
+    color: var(--mdb-accent);
+}
+
+.text {
+    flex: 1;
+}
+
+.chevron {
+    transition: transform 0.2s ease;
+}
+
+.link:hover .chevron,
+.active .chevron {
+    transform: translateX(3px);
+}
+
+@media (max-width: 767px) {
+    .link {
+        justify-content: center;
+        padding: 0.6rem 0.5rem;
+    }
+
+    .chevron {
+        display: none;
+    }
+
+    .text {
+        flex: none;
+    }
 }
