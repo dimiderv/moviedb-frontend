@@ -2,11 +2,19 @@ import { apiSlice } from '../../app/api/apiSlice';
 
 export const moviesApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
+        // Paginated: returns { movies, page, limit, total, totalPages }.
         getMovies: builder.query({
-            query: () => '/movies',
-            transformResponse: (response) => response.movies,
+            query: ({ page = 1, limit = 24, genre = '', search = '' } = {}) => ({
+                url: '/movies',
+                params: { page, limit, ...(genre && { genre }), ...(search && { search }) },
+            }),
             providesTags: ['Movies'],
             keepUnusedDataFor: 300,
+        }),
+        getGenres: builder.query({
+            query: () => '/genre',
+            transformResponse: (response) => response.genres.map((genre) => genre.name),
+            keepUnusedDataFor: 3600,
         }),
         getFavorites: builder.query({
             query: () => '/favorites',
@@ -57,6 +65,7 @@ export const moviesApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetMoviesQuery,
+    useGetGenresQuery,
     useGetFavoritesQuery,
     useAddFavoriteMutation,
     useRemoveFavoriteMutation,

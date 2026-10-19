@@ -207,3 +207,9 @@
     margin: 0;
     line-height: 1.6;
 }
+
+/* Previous page stays visible, dimmed, while the next one loads */
+.refreshing {
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+}

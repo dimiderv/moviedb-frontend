@@ -1,4 +1,4 @@
-// Matches on title or cast member, case-insensitively.
+// Client-side match on title or cast member, used for the (small) favorites list.
 export const filterMovies = (movies = [], search = '') => {
     const query = search.trim().toLowerCase();
     if (!query) return movies;
@@ -8,5 +8,3 @@ export const filterMovies = (movies = [], search = '') => {
             movie.cast.some((actor) => actor.toLowerCase().includes(query))
     );
 };
-
-export const byNewest = (a, b) => Number(b.year) - Number(a.year) || a.title.localeCompare(b.title);

@@ -231,6 +231,24 @@ body::before {
     --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28245, 185, 66, 1%29'/%3e%3c/svg%3e");
 }
 
+.pagination {
+    --bs-pagination-color: var(--mdb-text);
+    --bs-pagination-bg: var(--mdb-surface);
+    --bs-pagination-border-color: var(--mdb-border-strong);
+    --bs-pagination-hover-color: var(--mdb-accent);
+    --bs-pagination-hover-bg: var(--mdb-surface-raised);
+    --bs-pagination-hover-border-color: var(--mdb-border-strong);
+    --bs-pagination-focus-color: var(--mdb-accent);
+    --bs-pagination-focus-bg: var(--mdb-surface-raised);
+    --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(var(--mdb-accent-rgb), 0.25);
+    --bs-pagination-active-color: var(--mdb-accent-contrast);
+    --bs-pagination-active-bg: var(--mdb-accent);
+    --bs-pagination-active-border-color: var(--mdb-accent);
+    --bs-pagination-disabled-color: var(--mdb-text-muted);
+    --bs-pagination-disabled-bg: var(--mdb-surface);
+    --bs-pagination-disabled-border-color: var(--mdb-border);
+}
+
 .modal-content {
     background: var(--mdb-surface);
     border: 1px solid var(--mdb-border);
