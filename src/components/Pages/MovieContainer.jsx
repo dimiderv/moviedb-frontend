@@ -22,7 +22,8 @@ const MovieContainer = () => {
 
     const visibleMovies = useMemo(() => {
         const inGenre = genre ? movies.filter((movie) => movie.genres.includes(genre)) : movies;
-        return filterMovies(inGenre, search).sort(byNewest);
+        // Copy before sorting: RTK Query data is frozen and can't be sorted in place.
+        return [...filterMovies(inGenre, search)].sort(byNewest);
     }, [movies, genre, search]);
 
     const handleGenreChange = (e) => {
